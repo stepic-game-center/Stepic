@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UserLoginWindow</class>
+ <widget class="QMainWindow" name="UserLoginWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>614</width>
+    <height>384</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>614</width>
+    <height>384</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>614</width>
+    <height>384</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Stepic 登录</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../image/游戏.png</normaloff>../image/游戏.png</iconset>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #fff;</string>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label_icon">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>10</y>
+      <width>231</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../image/游戏大logo-s.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_name">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>110</y>
+      <width>361</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_name">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>110</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>账户名称</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_pwd">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>150</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string> 密码</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_pwd">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>150</y>
+      <width>361</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>190</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>记住我的密码</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_line">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>250</y>
+      <width>531</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <underline>true</underline>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-bottom: 1px solid #000;</string>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="openExternalLinks">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_login">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>220</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>登录</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="btn_close">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>220</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>取消</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_tips1">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>280</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>登录时需要帮助吗？</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="btn_error">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>280</y>
+      <width>281</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>我无法登录...</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_tips2">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>320</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
+    <property name="text">
+     <string> 还没有Stepic账户吗？</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="btn_regit">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>320</y>
+      <width>281</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>创建一个新的账户...</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../image/image.qrc"/>
+ </resources>
+ <connections/>
+</ui>

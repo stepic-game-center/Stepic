@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UserRegistWindow</class>
+ <widget class="QMainWindow" name="UserRegistWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>614</width>
+    <height>384</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>614</width>
+    <height>384</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>614</width>
+    <height>384</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Stepic 注册</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../image/游戏.png</normaloff>../image/游戏.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label_icon">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>10</y>
+      <width>231</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../image/游戏大logo-s.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_name">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>120</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>账户名称</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_name">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>120</y>
+      <width>361</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_pwd">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>170</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string> 密码</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_pwd">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>170</y>
+      <width>361</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_regist">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>300</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>注册</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="btn_close">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>300</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>取消</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_repwd">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>220</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>确认密码</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_repwd">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>220</y>
+      <width>361</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
