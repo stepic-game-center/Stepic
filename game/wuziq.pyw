@@ -37,11 +37,9 @@ class Checkerboard:
         :param point:落子位置
         :return:若该子落下之后即可获胜，则返回获胜方，否则返回 None
         """
-        print(f'{chessman.Name} ({point.X}, {point.Y})')
         self._checkerboard[point.Y][point.X] = chessman.Value
 
         if self._win(point):
-            print(f'{chessman.Name}获胜')
             return chessman
 
     # 判断是否赢了
@@ -145,7 +143,7 @@ def main():
                                 else:
                                     black_win_count += 1
                         else:
-                            print('超出棋盘区域')
+                            pass
 
         # 画棋盘
         _draw_checkerboard(screen)

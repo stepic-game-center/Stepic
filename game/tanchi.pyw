@@ -1,6 +1,8 @@
 import pygame
 import time
+import configparser
 import numpy as np
+from threading import Thread
 # 此模块包含游戏所需的常量
 from pygame.locals import *
 
@@ -9,7 +11,14 @@ BOARDWIDTH = 48
 BOARDHEIGHT = 28
 # 分数
 score = 0
+config = configparser.RawConfigParser()
 
+
+def async_call(fn):
+    def wrapper(*args, **kwargs):
+        Thread(target=fn, args=args, kwargs=kwargs).start()
+
+    return wrapper
 
 
 class Food(object):
@@ -64,7 +73,7 @@ class Snack(object):
         food_x, food_y = food.item
         # 比较蛇头坐标与食物坐标
         if (food_x == snack_x) and (food_y == snack_y):
-            score += 100
+            score += 10
             return 1
         else:
             return 0
@@ -197,6 +206,7 @@ def game(screen):
     # 设置中文字体和大小
     font = pygame.font.SysFont('SimHei', 20)
     is_fail = 0
+    is_write = 0
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -211,6 +221,9 @@ def game(screen):
         if is_fail:
             font2 = pygame.font.Font(None, 40)
             print_text(screen, font2, 400, 200, "GAME OVER")
+            if is_write == 0:
+                write_score()
+                is_write = 1
         # 游戏主进程
         if not is_fail:
             enlarge = snack.eat_food(food)
@@ -221,6 +234,15 @@ def game(screen):
         # 游戏刷新
         pygame.display.update()
         time.sleep(0.1)
+
+
+#记录得分
+@async_call
+def write_score():
+    config.read('../config/user.ini', encoding='utf-8')
+    if config.has_section('Game'):
+        config.set('Game', 'tanchi_score', str(score))
+        config.write(open('../config/user.ini', 'w', encoding='utf-8'))
 
 
 # 主程序

@@ -294,8 +294,5 @@
    </widget>
   </widget>
  </widget>
- <resources>
-  <include location="../image/image.qrc"/>
- </resources>
  <connections/>
 </ui>

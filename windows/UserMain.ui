@@ -33,179 +33,266 @@
    <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QScrollArea" name="Leaderboard_Area">
-    <property name="geometry">
-     <rect>
-      <x>368</x>
-      <y>11</y>
-      <width>621</width>
-      <height>271</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents_2">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>619</width>
-       <height>269</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QLabel" name="logo">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>60</y>
-      <width>350</width>
-      <height>150</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>350</width>
-      <height>150</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>350</width>
-      <height>150</height>
-     </size>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../image/游戏大logo.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QScrollArea" name="Game_Area">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>300</y>
-      <width>981</width>
-      <height>431</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(213, 213, 213);</string>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>979</width>
-       <height>429</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="1">
-       <widget class="QToolButton" name="gameBotton_2">
-        <property name="minimumSize">
-         <size>
-          <width>101</width>
-          <height>171</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>101</width>
-          <height>171</height>
-         </size>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="contextMenuPolicy">
-         <enum>Qt::ActionsContextMenu</enum>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(166, 166, 166);</string>
-        </property>
-        <property name="text">
-         <string>2048</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../image/2048.png</normaloff>../image/2048.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>100</width>
-          <height>150</height>
-         </size>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QToolButton" name="gameBotton_1">
-        <property name="minimumSize">
-         <size>
-          <width>101</width>
-          <height>171</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>101</width>
-          <height>171</height>
-         </size>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="contextMenuPolicy">
-         <enum>Qt::ActionsContextMenu</enum>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(166, 166, 166);</string>
-        </property>
-        <property name="text">
-         <string>2048</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../image/2048.png</normaloff>../image/2048.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>100</width>
-          <height>150</height>
-         </size>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QLabel" name="logo">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>1</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>400</width>
+        <height>200</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>400</width>
+        <height>200</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/游戏大logo.png</pixmap>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="QScrollArea" name="Game_Area">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>3</horstretch>
+        <verstretch>2</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(213, 213, 213);
+border: none;</string>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>978</width>
+         <height>481</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="1">
+         <widget class="QToolButton" name="gameBotton_2">
+          <property name="minimumSize">
+           <size>
+            <width>101</width>
+            <height>171</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>101</width>
+            <height>171</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::ActionsContextMenu</enum>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(166, 166, 166);</string>
+          </property>
+          <property name="text">
+           <string>2048</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../image/2048.png</normaloff>../image/2048.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>150</height>
+           </size>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextUnderIcon</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QToolButton" name="gameBotton_1">
+          <property name="minimumSize">
+           <size>
+            <width>101</width>
+            <height>171</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>101</width>
+            <height>171</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::ActionsContextMenu</enum>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(166, 166, 166);</string>
+          </property>
+          <property name="text">
+           <string>2048</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../image/2048.png</normaloff>../image/2048.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>100</width>
+            <height>150</height>
+           </size>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextUnderIcon</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QScrollArea" name="Leaderboard_Area">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>1</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none;</string>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>571</width>
+         <height>240</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QLabel" name="Leaderboard">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>1</horstretch>
+            <verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <family>黑体</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>排行榜</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QToolButton" name="menu_Button">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>1</horstretch>
+            <verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>131</width>
+            <height>31</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>131</width>
+            <height>31</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>你好，xxx</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../image/游戏.png</normaloff>../image/游戏.png</iconset>
+          </property>
+          <property name="popupMode">
+           <enum>QToolButton::MenuButtonPopup</enum>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextBesideIcon</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QTableWidget" name="score_table">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>6</horstretch>
+            <verstretch>6</verstretch>
+           </sizepolicy>
+          </property>
+          <column>
+           <property name="text">
+            <string>用户名</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>游戏名</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>最高分</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
    <zorder>Game_Area</zorder>
    <zorder>logo</zorder>
    <zorder>Leaderboard_Area</zorder>
