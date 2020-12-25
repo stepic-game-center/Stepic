@@ -169,6 +169,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
         data = {'username': name}
         res = requests.post(url=url, data=data)
         user = json.loads(res.text)
+        self.exper = user['exper']
         if user['unick'] != None:
             self.menu_Button.setText('欢迎您，' + user['unick'])
             self.logout.setText('注销账户：' + user['unick'])
@@ -193,16 +194,20 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
             index = 0
             for score in scores:
                 self.score_table.setRowCount(index + 1)
-                item1 = QtWidgets.QTableWidgetItem(str(score['gname']))
+                item1 = QtWidgets.QTableWidgetItem(score['gname'])
                 item1.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.score_table.setItem(index, 0, item1)
-                item2 = QtWidgets.QTableWidgetItem(str(score['uname']))
+                if score['unick'] == None:
+                    username = score['uname']
+                else:
+                    username = score['unick']
+                item2 = QtWidgets.QTableWidgetItem(username)
                 item2.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.score_table.setItem(index, 1, item2)
                 item3 = QtWidgets.QTableWidgetItem(str(score['score']))
                 item3.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.score_table.setItem(index, 2, item3)
-                item4 = QtWidgets.QTableWidgetItem(str(score['date']))
+                item4 = QtWidgets.QTableWidgetItem(score['date'])
                 item4.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
                 self.score_table.setItem(index, 3, item4)
                 index += 1
@@ -259,6 +264,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                 config.write(open('../config/user.ini', 'w', encoding='utf-8'))
 
     def download_game(self):
+        index = 0
         if config.has_section('Game'):  # 配置文件中已有Game
             if config.has_option('Game', self.sender().game['gname']):  # 判断是否已有该游戏
                 if config.get('Game', self.sender().game['gname']) == self.sender().game['version']:  # 有该游戏判断版本是否最新
@@ -270,6 +276,8 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                         url_1 = 'http://106.13.236.185:5000/api/score/add'
                         data_1 = {'uname': self.username, 'gid': self.sender().game['gid'], 'score': score}
                         res_1 = requests.post(url=url_1, data=data_1)
+                        if res_1.text == 'success' and int(score) > 0:
+                            index += 5
                     self.receive_name(self.username)
                     self.show()
                 else:  # 不是最新更新版本
@@ -290,6 +298,8 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                                 url_1 = 'http://106.13.236.185:5000/api/score/add'
                                 data_1 = {'uname': self.username, 'gid': self.sender().game['gid'], 'score': score}
                                 res_1 = requests.post(url=url_1, data=data_1)
+                                if res_1.text == 'success' and int(score) > 0:
+                                    index += 5
                             self.receive_name(self.username)
                             self.show()
                     else:  # 不更新打开游戏
@@ -301,6 +311,8 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                             url_1 = 'http://106.13.236.185:5000/api/score/add'
                             data_1 = {'uname': self.username, 'gid': self.sender().game['gid'], 'score': score}
                             res_1 = requests.post(url=url_1, data=data_1)
+                            if res_1.text == 'success' and int(score) > 0:
+                                index += 5
                         self.receive_name(self.username)
                         self.show()
             else:  # 下载游戏并在配置文件中记录
@@ -320,6 +332,8 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                             url_1 = 'http://106.13.236.185:5000/api/score/add'
                             data_1 = {'uname': self.username, 'gid': self.sender().game['gid'], 'score': score}
                             res_1 = requests.post(url=url_1, data=data_1)
+                            if res_1.text == 'success' and int(score) > 0:
+                                index += 5
                         self.receive_name(self.username)
                         self.show()
         else:  # 新增Game配置文件并询问是否下载
@@ -334,14 +348,20 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                 if massage == QMessageBox.Yes:  # 打开游戏
                     self.hide()
                     os.system('python ../game/' + self.sender().game['filename'])
+                    config.read('../config/user.ini', encoding='utf-8')
                     if config.has_option('Game', self.sender().game['name'] + '_score'):
                         score = config.get('Game', self.sender().game['name'] + '_score')
                         url_1 = 'http://106.13.236.185:5000/api/score/add'
                         data_1 = {'uname': self.username, 'gid': self.sender().game['gid'], 'score': score}
                         res_1 = requests.post(url=url_1, data=data_1)
+                        if res_1.text == 'success' and int(score) > 0:
+                            index += 5
                     self.receive_name(self.username)
                     self.show()
         config.write(open('../config/user.ini', 'w', encoding='utf-8'))
+        url_2 = 'http://106.13.236.185:5000/api/user/update_exper'
+        data_2 = {'username': self.username, 'exper': index}
+        res_2 = requests.post(url=url_2, data=data_2)
 
     def user_information(self):
         self.Win_information = UserInformationForm()
@@ -393,8 +413,9 @@ class UserInformationForm(QtWidgets.QMainWindow, Ui_UserInformationWindow):
             self.birthday_Edit.setDate(date)
         self.phone_Edit.setText(user['phone'])
         self.intro_Edit.setText(user['intro'])
-        level = int(user['exper'] / 5)
+        level = int(user['exper'] / 100)
         self.level.setText(str(level) + '  级')
+        self.exper.setText('经验值：' + str(user['exper'] % 100) + '/100')
         uid = user['uid']
         url_1 = 'http://106.13.236.185:5000/api/score/query_event'
         data_1 = {'uid': uid}

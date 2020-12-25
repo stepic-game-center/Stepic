@@ -105,8 +105,6 @@ class Ui_UserMainWindow(object):
         self.logo.setObjectName("logo")
         self.gridLayout_2.addWidget(self.logo, 0, 0, 2, 1)
         self.Game_Area = QtWidgets.QScrollArea(self.centralwidget)
-        self.Game_Area.setStyleSheet("background-color: rgb(213, 213, 213);\n"
-                                     "border: none;")
         self.Game_Area.setWidgetResizable(True)
         self.Game_Area.setObjectName("Game_Area")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
@@ -128,7 +126,8 @@ class Ui_UserMainWindow(object):
             game_Button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
             game_Button.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
             game_Button.setLayoutDirection(QtCore.Qt.LeftToRight)
-            game_Button.setStyleSheet("background-color: rgb(166, 166, 166);")
+            game_Button.setStyleSheet("background-color: rgb(245, 245, 245); border-radius: 5px; opacity: 0.8;\n"
+                                      "box-shadow: rgb(0,0,0) 3px 3px 3px;")
             icon1 = QtGui.QIcon()
             icon1.addPixmap(QtGui.QPixmap("../image/game/" + game['image'].split('/')[-1]), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             game_Button.setIcon(icon1)
@@ -140,6 +139,9 @@ class Ui_UserMainWindow(object):
 
             index += 1
 
+        self.setWindowOpacity(0.95)  # 设置窗口透明度
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)  # 设置窗口背景透明
+        # self.setWindowFlag(QtCore.Qt.FramelessWindowHint)  # 隐藏边框
 
         self.Game_Area.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout_2.addWidget(self.Game_Area, 2, 0, 1, 2)
