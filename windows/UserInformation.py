@@ -253,6 +253,7 @@ class Ui_UserInformationWindow(object):
         sizePolicy.setVerticalStretch(4)
         sizePolicy.setHeightForWidth(self.score_table.sizePolicy().hasHeightForWidth())
         self.score_table.setSizePolicy(sizePolicy)
+        self.score_table.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
         self.score_table.setTextElideMode(QtCore.Qt.ElideMiddle)
         self.score_table.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
         self.score_table.setRowCount(0)

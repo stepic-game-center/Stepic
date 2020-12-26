@@ -80,6 +80,7 @@ class Ui_UserMainWindow(object):
         sizePolicy.setVerticalStretch(6)
         sizePolicy.setHeightForWidth(self.score_table.sizePolicy().hasHeightForWidth())
         self.score_table.setSizePolicy(sizePolicy)
+        self.score_table.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
         self.score_table.setObjectName("score_table")
         self.score_table.setColumnCount(4)
         self.score_table.setRowCount(0)

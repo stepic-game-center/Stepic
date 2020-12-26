@@ -253,6 +253,7 @@ class Ui_UserInformationWindow(object):
         sizePolicy.setVerticalStretch(4)
         sizePolicy.setHeightForWidth(self.score_table.sizePolicy().hasHeightForWidth())
         self.score_table.setSizePolicy(sizePolicy)
+        self.score_table.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
         self.score_table.setTextElideMode(QtCore.Qt.ElideMiddle)
         self.score_table.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerPixel)
         self.score_table.setRowCount(0)
@@ -271,6 +272,10 @@ class Ui_UserInformationWindow(object):
         self.infornation_Area.setWidget(self.scrollAreaWidgetContents_2)
         self.gridLayout_2.addWidget(self.infornation_Area, 1, 0, 1, 2)
         UserInformationWindow.setCentralWidget(self.centralwidget)
+
+        self.setWindowOpacity(0.95)  # 设置窗口透明度
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)  # 设置窗口背景透明
+        # self.setWindowFlag(QtCore.Qt.FramelessWindowHint)  # 隐藏边框
 
         self.retranslateUi(UserInformationWindow)
         QtCore.QMetaObject.connectSlotsByName(UserInformationWindow)
