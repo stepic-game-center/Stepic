@@ -53,9 +53,6 @@ class UserLoginForm(QtWidgets.QMainWindow, Ui_UserLoginWindow):
         res = requests.post(url=url, data=data)
         if res.text == "success":
             self.write_config()
-            self.Win_main = UserMainForm()
-            self.Win_main.download_image()
-            config.read('../config/user.ini', encoding='utf-8')
             self.Win_main_1 = UserMainForm()
             self.sign_1.connect(self.Win_main_1.receive_name)
             self.send_name(username)
@@ -228,7 +225,8 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
             event.ignore()
 
     def close(self):
-        app.exit(0)
+        self.hide()
+        app.quit()
 
     def logout_user(self):
         config.remove_section('User')
