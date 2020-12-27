@@ -44,7 +44,7 @@ class UserLoginForm(QtWidgets.QMainWindow, Ui_UserLoginWindow):
         if len(username) == 0 or len(password) == 0:
             QMessageBox.warning(self, "错误", "用户名和密码不得为空！", QMessageBox.Yes)
             return
-        url = "http://106.13.236.185:5000/api/login_user"
+        url = "https://stepic-api.redcountry.top/api/login_user"
         data = {"username": username, "password": password}
         res = requests.post(url=url, data=data)
         if res.text == "success":
@@ -128,7 +128,7 @@ class UserRegistForm(QtWidgets.QMainWindow, Ui_UserRegistWindow):
             self.lineEdit_repwd.clear()
             self.lineEdit_repwd.setFocus()
             return
-        url = "http://106.13.236.185:5000/api/regit_user"
+        url = "https://stepic-api.redcountry.top/api/regit_user"
         data = {"username": username, "password": password}
         res = requests.post(url=url, data=data)
         if res.text == "success":
@@ -151,7 +151,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
     def __init__(self, parent=None):
         super(UserMainForm, self).__init__(parent)
         self.setupUi(self)
-        url = "http://106.13.236.185:5000/api/game/query_all_pub"
+        url = "https://stepic-api.redcountry.top/api/game/query_all_pub"
         r = requests.post(url=url, data="")
         self.games = json.loads(r.text)
         index = 0
@@ -166,7 +166,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
 
     def receive_name(self, name):
         self.username = name
-        url = 'http://106.13.236.185:5000/api/user/query_userinfo'
+        url = 'https://stepic-api.redcountry.top/api/user/query_userinfo'
         data = {'username': name}
         res = requests.post(url=url, data=data)
         user = json.loads(res.text)
@@ -179,7 +179,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
             self.menu_Button.setText('欢迎您，' + user['uname'])
             self.logout.setText('注销账户：' + user['uname'])
             QtWidgets.QApplication.processEvents()
-        url_1 = 'http://106.13.236.185:5000/api/score/query_max_all'
+        url_1 = 'https://stepic-api.redcountry.top/api/score/query_max_all'
         res_1 = requests.post(url=url_1, data='')
         if res_1.text == 'empty':
             self.score_table.setColumnCount(1)
@@ -219,12 +219,12 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
     def closeEvent(self, event):
         reply = QMessageBox.question(self, "退出", "您是否确定退出本平台？", QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
-            app.quit()
+            event.accept()
         else:
             event.ignore()
 
     def close(self):
-        app.quit()
+        app.exit(0)
 
     def logout_user(self):
         config.remove_section('User')
@@ -271,7 +271,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                     config.read('../config/user.ini', encoding='utf-8')
                     if config.has_option('Game', self.sender().game['name'] + '_score'):
                         score = config.get('Game', self.sender().game['name'] + '_score')
-                        url_1 = 'http://106.13.236.185:5000/api/score/add'
+                        url_1 = 'https://stepic-api.redcountry.top/api/score/add'
                         data_1 = {'uname': self.username, 'gid': self.sender().game['gid'], 'score': score}
                         res_1 = requests.post(url=url_1, data=data_1)
                         if res_1.text == 'success' and int(score) > 0:
@@ -292,7 +292,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                             config.read('../config/user.ini', encoding='utf-8')
                             if config.has_option('Game', self.sender().game['name'] + '_score'):
                                 score = config.get('Game', self.sender().game['name'] + '_score')
-                                url_1 = 'http://106.13.236.185:5000/api/score/add'
+                                url_1 = 'https://stepic-api.redcountry.top/api/score/add'
                                 data_1 = {'uname': self.username, 'gid': self.sender().game['gid'], 'score': score}
                                 res_1 = requests.post(url=url_1, data=data_1)
                                 if res_1.text == 'success' and int(score) > 0:
@@ -305,7 +305,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                         config.read('../config/user.ini', encoding='utf-8')
                         if config.has_option('Game', self.sender().game['name'] + '_score'):
                             score = config.get('Game', self.sender().game['name'] + '_score')
-                            url_1 = 'http://106.13.236.185:5000/api/score/add'
+                            url_1 = 'https://stepic-api.redcountry.top/api/score/add'
                             data_1 = {'uname': self.username, 'gid': self.sender().game['gid'], 'score': score}
                             res_1 = requests.post(url=url_1, data=data_1)
                             if res_1.text == 'success' and int(score) > 0:
@@ -326,7 +326,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                         config.read('../config/user.ini', encoding='utf-8')
                         if config.has_option('Game', self.sender().game['name'] + '_score'):
                             score = config.get('Game', self.sender().game['name'] + '_score')
-                            url_1 = 'http://106.13.236.185:5000/api/score/add'
+                            url_1 = 'https://stepic-api.redcountry.top/api/score/add'
                             data_1 = {'uname': self.username, 'gid': self.sender().game['gid'], 'score': score}
                             res_1 = requests.post(url=url_1, data=data_1)
                             if res_1.text == 'success' and int(score) > 0:
@@ -348,7 +348,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                     config.read('../config/user.ini', encoding='utf-8')
                     if config.has_option('Game', self.sender().game['name'] + '_score'):
                         score = config.get('Game', self.sender().game['name'] + '_score')
-                        url_1 = 'http://106.13.236.185:5000/api/score/add'
+                        url_1 = 'https://stepic-api.redcountry.top/api/score/add'
                         data_1 = {'uname': self.username, 'gid': self.sender().game['gid'], 'score': score}
                         res_1 = requests.post(url=url_1, data=data_1)
                         if res_1.text == 'success' and int(score) > 0:
@@ -356,7 +356,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                     self.receive_name(self.username)
                     self.show()
         config.write(open('../config/user.ini', 'w', encoding='utf-8'))
-        url_2 = 'http://106.13.236.185:5000/api/user/update_exper'
+        url_2 = 'https://stepic-api.redcountry.top/api/user/update_exper'
         data_2 = {'username': self.username, 'exper': index}
         res_2 = requests.post(url=url_2, data=data_2)
 
@@ -388,7 +388,7 @@ class UserInformationForm(QtWidgets.QMainWindow, Ui_UserInformationWindow):
 
     def receive_name(self, name):
         self.username = name
-        url = 'http://106.13.236.185:5000/api/user/query_userinfo'
+        url = 'https://stepic-api.redcountry.top/api/user/query_userinfo'
         data = {'username': name}
         res = requests.post(url=url, data=data)
         user = json.loads(res.text)
@@ -414,7 +414,7 @@ class UserInformationForm(QtWidgets.QMainWindow, Ui_UserInformationWindow):
         self.level.setText(str(level) + '  级')
         self.exper.setText('经验值：' + str(user['exper'] % 100) + '/100')
         uid = user['uid']
-        url_1 = 'http://106.13.236.185:5000/api/score/query_event'
+        url_1 = 'https://stepic-api.redcountry.top/api/score/query_event'
         data_1 = {'uid': uid}
         res_1 = requests.post(url=url_1, data=data_1)
         if res_1.text == 'empty':
@@ -462,7 +462,7 @@ class UserInformationForm(QtWidgets.QMainWindow, Ui_UserInformationWindow):
             QMessageBox.warning(self, '错误', '请输入正确的电话号码！', QMessageBox.Yes)
             self.phone_Edit.setFocus()
             return
-        url = 'http://106.13.236.185:5000/api/user/update_userinfo'
+        url = 'https://stepic-api.redcountry.top/api/user/update_userinfo'
         data = {'uname': name, 'unick': nick, 'sex': sex, 'phone': phone, 'birthday': birthday, 'intro': intro}
         res = requests.post(url=url, data=data)
         if res.text == 'success':

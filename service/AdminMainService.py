@@ -185,7 +185,7 @@ class AdminMainForm(QtWidgets.QMainWindow, Ui_AdminMainWindow):
     def closeEvent(self, event):
         reply = QMessageBox.question(self, "退出", "您是否确定退出本平台？", QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
-            app.quit()
+            event.accept()
         else:
             event.ignore()
 
