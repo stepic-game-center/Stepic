@@ -82,23 +82,15 @@ class Ui_AdminUserWindow(object):
         self.birthday_Edit = QtWidgets.QDateEdit()
         self.delete_button = QtWidgets.QPushButton()
         self.update_button = QtWidgets.QPushButton()
+        self.man_radio = []
+        self.woman_radio = []
+        self.birthday_Edit = []
+        self.delete_button = []
+        self.update_button = []
         url = 'http://106.13.236.185:5000/api/user/query_all'
         res = requests.post(url=url, data='')
-        if res.text == 'empty':
-            self.user_table.setColumnCount(1)
-            self.user_table.setRowCount(1)
+        if res.text != 'empty':
             self.user_table.verticalHeader().setVisible(False)
-            self.user_table.horizontalHeader().setVisible(False)
-            newItem = QtWidgets.QTableWidgetItem('还没有用户...')
-            self.user_table.setItem(0, 0, newItem)
-            QtWidgets.QTableWidget.resizeRowsToContents(self.user_table)
-        else:
-            self.user_table.verticalHeader().setVisible(False)
-            self.man_radio = []
-            self.woman_radio = []
-            self.birthday_Edit = []
-            self.delete_button = []
-            self.update_button = []
             users = json.loads(res.text)
             index = 0
             for user in users:
@@ -119,12 +111,14 @@ class Ui_AdminUserWindow(object):
                 man_radio.setObjectName('man_radio_' + str(index))
                 man_radio.setText('男')
                 man_radio.id = index
+                man_radio.user = user
                 layout.addWidget(man_radio, 0, QtCore.Qt.AlignVCenter)
                 self.man_radio.append(man_radio)
                 woman_radio = QtWidgets.QRadioButton(frame)
                 woman_radio.setObjectName('woman_radio_' + str(index))
                 woman_radio.setText('女')
                 woman_radio.id = index
+                woman_radio.user = user
                 layout.addWidget(woman_radio, 0, QtCore.Qt.AlignVCenter)
                 self.woman_radio.append(woman_radio)
                 self.user_table.setCellWidget(index, 3, frame)
@@ -152,6 +146,7 @@ class Ui_AdminUserWindow(object):
                     birthday = datetime.datetime.strptime('2000-01-01', '%Y-%m-%d').date()
                     birthday_edit.setDate(birthday)
                 birthday_edit.id = index
+                birthday_edit.user = user
                 self.birthday_Edit.append(birthday_edit)
                 item = QtWidgets.QTableWidgetItem(str(user['exper']))
                 item.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)

@@ -159,6 +159,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
             button.game = self.games[index]
             index += 1
             button.clicked.connect(self.download_game)
+        self.download_image()
         self.exit.triggered.connect(self.close)
         self.logout.triggered.connect(self.logout_user)
         self.information.triggered.connect(self.user_information)
@@ -170,7 +171,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
         res = requests.post(url=url, data=data)
         user = json.loads(res.text)
         self.exper = user['exper']
-        if user['unick'] != None:
+        if user['unick'] != None and user['unick'] != '':
             self.menu_Button.setText('欢迎您，' + user['unick'])
             self.logout.setText('注销账户：' + user['unick'])
             QtWidgets.QApplication.processEvents()
@@ -232,6 +233,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
         self.Win_login_1 = UserLoginForm()
         self.Win_login_1.show()
 
+    @async_call
     def download_image(self):
         if config.has_section('Image'):
             for game in self.games:
@@ -239,22 +241,18 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                     if config.get('Image', game['gname']) == game['version']:
                         continue
                     else:
-                        QMessageBox.information(self, '请稍候', '系统监测有资源未下载，请稍候...', QMessageBox.Yes)
-                        os.remove('../image/game/' + game['image'].split('/')[-1])
                         u = game["image"]
                         image = requests.get(u)
                         open("../image/game/" + game['image'].split('/')[-1], 'wb').write(image.content)
                         config.set('Image', game['gname'], game['version'])
                         config.write(open('../config/user.ini', 'w', encoding='utf-8'))
                 else:
-                    QMessageBox.information(self, '请稍候', '系统监测有资源未下载，请稍候...', QMessageBox.Yes)
                     u = game["image"]
                     image = requests.get(u)
                     open("../image/game/" + game['image'].split('/')[-1], 'wb').write(image.content)
                     config.set('Image', game['gname'], game['version'])
                     config.write(open('../config/user.ini', 'w', encoding='utf-8'))
         else:
-            QMessageBox.information(self, '请稍候', '第一次启动需要时间下载资源，请稍候...', QMessageBox.Yes)
             config.add_section('Image')
             for game in self.games:
                 u = game["image"]
@@ -283,7 +281,6 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                 else:  # 不是最新更新版本
                     reply = QMessageBox.question(self, '更新', '游戏版本可以更新，是否更新？', QMessageBox.Yes | QMessageBox.No)
                     if reply == QMessageBox.Yes:  # 更新游戏
-                        os.remove('../game/' + self.sender().game['filename'])
                         url = self.sender().game['fileurl']
                         g = requests.get(url)
                         open('../game/' + self.sender().game['filename'], 'wb').write(g.content)
@@ -396,7 +393,7 @@ class UserInformationForm(QtWidgets.QMainWindow, Ui_UserInformationWindow):
         res = requests.post(url=url, data=data)
         user = json.loads(res.text)
         self.name_Edit.setText(user['uname'])
-        if user['unick'] != None:
+        if user['unick'] != None and user['unick'] != '':
             self.setWindowTitle(user['unick'] + '的个人主页')
             self.nick_Edit.setText(user['unick'])
         else:
