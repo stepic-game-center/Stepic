@@ -113,7 +113,7 @@ class Ui_UserMainWindow(object):
         self.gridLayout = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout.setObjectName("gridLayout")
 
-        url = "http://106.13.236.185:5000/api/game/query_all_pub"
+        url = "https://stepic-api.redcountry.top/api/game/query_all_pub"
         r = requests.post(url=url, data="")
         games = json.loads(r.text)
 

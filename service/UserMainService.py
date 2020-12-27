@@ -270,6 +270,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                 if config.get('Game', self.sender().game['gname']) == self.sender().game['version']:  # 有该游戏判断版本是否最新
                     self.hide()
                     os.system('python ../game/' + self.sender().game['filename'])
+                    self.receive_name(self.username)
                     index += 5
                     self.show()
                 else:  # 不是最新更新版本
@@ -283,6 +284,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                         if massage == QMessageBox.Yes:  # 打开游戏
                             self.hide()
                             os.system('python ../game/' + self.sender().game['filename'])
+                            self.receive_name(self.username)
                             index += 5
                             self.show()
                     else:  # 不更新打开游戏
@@ -301,6 +303,7 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                     if massage == QMessageBox.Yes:  # 打开游戏
                         self.hide()
                         os.system('python ../game/' + self.sender().game['filename'])
+                        self.receive_name(self.username)
                         index += 5
                         self.show()
         else:  # 新增Game配置文件并询问是否下载
@@ -315,14 +318,8 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                 if massage == QMessageBox.Yes:  # 打开游戏
                     self.hide()
                     os.system('python ../game/' + self.sender().game['filename'])
-                    config.read('../config/user.ini', encoding='utf-8')
-                    if config.has_option('Game', self.sender().game['name'] + '_score'):
-                        score = config.get('Game', self.sender().game['name'] + '_score')
-                        url_1 = 'https://stepic-api.redcountry.top/api/score/add'
-                        data_1 = {'uname': self.username, 'gid': self.sender().game['gid'], 'score': score}
-                        res_1 = requests.post(url=url_1, data=data_1)
-                        if res_1.text == 'success' and int(score) > 0:
-                            index += 5
+                    self.receive_name(self.username)
+                    index += 5
                     self.receive_name(self.username)
                     self.show()
         config.write(open('../config/user.ini', 'w', encoding='utf-8'))
