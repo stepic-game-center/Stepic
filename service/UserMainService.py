@@ -320,7 +320,6 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                     os.system('python ../game/' + self.sender().game['filename'])
                     self.receive_name(self.username)
                     index += 5
-                    self.receive_name(self.username)
                     self.show()
         config.write(open('../config/user.ini', 'w', encoding='utf-8'))
         url_2 = 'https://stepic-api.redcountry.top/api/user/update_exper'
