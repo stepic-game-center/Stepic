@@ -9,6 +9,10 @@ from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import pyqtSignal
 
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+sys.path.append(rootPath + '\windows')
+
 from UserLogin import Ui_UserLoginWindow
 from UserRegist import Ui_UserRegistWindow
 from UserMain1 import Ui_UserMainWindow

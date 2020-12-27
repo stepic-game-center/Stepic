@@ -1,9 +1,15 @@
 import sys
+import os
 import requests
 import configparser
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import pyqtSignal
+
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+sys.path.append(rootPath + '/windows')
+sys.path.append(rootPath + '/service')
 
 from AdminLogin import Ui_AdminLoginWindow
 from DeveloperRegist import Ui_DeveloperRegistWindow
