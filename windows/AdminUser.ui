@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
+    <width>1200</width>
     <height>800</height>
    </rect>
   </property>
@@ -31,6 +31,63 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="search_Edit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>2</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>401</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>401</width>
+        <height>31</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="4" alignment="Qt::AlignRight|Qt::AlignTop">
+     <widget class="QToolButton" name="menu_Button">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>1</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>201</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>201</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../image/游戏.png</normaloff>../image/游戏.png</iconset>
+      </property>
+      <property name="popupMode">
+       <enum>QToolButton::MenuButtonPopup</enum>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextBesideIcon</enum>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="0">
      <widget class="QLabel" name="logo">
       <property name="sizePolicy">
@@ -62,11 +119,11 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="2">
+    <item row="1" column="0" colspan="5">
      <widget class="QTableWidget" name="user_table">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>3</horstretch>
+        <horstretch>4</horstretch>
         <verstretch>6</verstretch>
        </sizepolicy>
       </property>
@@ -129,38 +186,35 @@
       </column>
      </widget>
     </item>
-    <item row="0" column="1" alignment="Qt::AlignRight|Qt::AlignTop">
-     <widget class="QToolButton" name="menu_Button">
+    <item row="0" column="2">
+     <widget class="QPushButton" name="search_Button">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
         <horstretch>1</horstretch>
         <verstretch>1</verstretch>
        </sizepolicy>
       </property>
       <property name="minimumSize">
        <size>
-        <width>201</width>
+        <width>31</width>
         <height>31</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>201</width>
+        <width>31</width>
         <height>31</height>
        </size>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="text">
-       <string>...</string>
+       <string/>
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../image/游戏.png</normaloff>../image/游戏.png</iconset>
-      </property>
-      <property name="popupMode">
-       <enum>QToolButton::MenuButtonPopup</enum>
-      </property>
-      <property name="toolButtonStyle">
-       <enum>Qt::ToolButtonTextBesideIcon</enum>
+        <normaloff>../image/search.jpg</normaloff>../image/search.jpg</iconset>
       </property>
      </widget>
     </item>

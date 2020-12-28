@@ -195,7 +195,6 @@ def main():
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
-                send_score(score)
                 sys.exit()
             elif event.type == KEYDOWN:
                 if event.key == K_RETURN:
@@ -343,13 +342,12 @@ config = configparser.RawConfigParser()
 def send_score(game_score):
     config.read('../config/user.ini', encoding='utf-8')
     if config.has_section('User'):
-        if game_score > 0:
-            name = os.path.basename(__file__).split('.')[0]
-            uname = config.get('User', 'username')
-            url = 'https://stepic-api.redcountry.top/api/score/add2'
-            data = {'name': name, 'uname': uname, 'score': game_score}
-            res = requests.post(url=url, data=data)
-            print(res.text)
+        name = os.path.basename(__file__).split('.')[0]
+        uname = config.get('User', 'username')
+        url = 'https://stepic-api.redcountry.top/api/score/add2'
+        data = {'name': name, 'uname': uname, 'score': game_score}
+        res = requests.post(url=url, data=data)
+        print(res.text)
 
 
 if __name__ == '__main__':

@@ -31,42 +31,68 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="logo">
+    <item row="0" column="3" alignment="Qt::AlignRight|Qt::AlignTop">
+     <widget class="QToolButton" name="menu_Button">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>1</horstretch>
-        <verstretch>2</verstretch>
+        <verstretch>1</verstretch>
        </sizepolicy>
       </property>
       <property name="minimumSize">
        <size>
-        <width>350</width>
-        <height>200</height>
+        <width>201</width>
+        <height>31</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>350</width>
-        <height>200</height>
+        <width>201</width>
+        <height>31</height>
        </size>
       </property>
       <property name="text">
-       <string/>
+       <string>...</string>
       </property>
-      <property name="pixmap">
-       <pixmap>../image/游戏大logo.png</pixmap>
+      <property name="icon">
+       <iconset>
+        <normaloff>../image/游戏.png</normaloff>../image/游戏.png</iconset>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+      <property name="popupMode">
+       <enum>QToolButton::MenuButtonPopup</enum>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextBesideIcon</enum>
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="2">
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>1</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>21</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>31</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="4">
      <widget class="QTableWidget" name="developer_table">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>3</horstretch>
+        <horstretch>4</horstretch>
         <verstretch>6</verstretch>
        </sizepolicy>
       </property>
@@ -109,38 +135,63 @@
       </column>
      </widget>
     </item>
-    <item row="0" column="1" alignment="Qt::AlignRight|Qt::AlignTop">
-     <widget class="QToolButton" name="menu_Button">
+    <item row="0" column="0">
+     <widget class="QLabel" name="logo">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>1</horstretch>
+        <verstretch>2</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>350</width>
+        <height>200</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>350</width>
+        <height>200</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../image/游戏大logo.png</pixmap>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="pushButton">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
         <horstretch>1</horstretch>
         <verstretch>1</verstretch>
        </sizepolicy>
       </property>
       <property name="minimumSize">
        <size>
-        <width>201</width>
+        <width>31</width>
         <height>31</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>201</width>
+        <width>31</width>
         <height>31</height>
        </size>
       </property>
       <property name="text">
-       <string>...</string>
+       <string/>
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../image/游戏.png</normaloff>../image/游戏.png</iconset>
-      </property>
-      <property name="popupMode">
-       <enum>QToolButton::MenuButtonPopup</enum>
-      </property>
-      <property name="toolButtonStyle">
-       <enum>Qt::ToolButtonTextBesideIcon</enum>
+        <normaloff>../image/search.jpg</normaloff>../image/search.jpg</iconset>
       </property>
      </widget>
     </item>

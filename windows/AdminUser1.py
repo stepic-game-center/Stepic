@@ -27,6 +27,41 @@ class Ui_AdminUserWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
+        self.search_Edit = QtWidgets.QLineEdit(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(2)
+        sizePolicy.setVerticalStretch(1)
+        sizePolicy.setHeightForWidth(self.search_Edit.sizePolicy().hasHeightForWidth())
+        self.search_Edit.setSizePolicy(sizePolicy)
+        self.search_Edit.setMinimumSize(QtCore.QSize(21, 31))
+        self.search_Edit.setMaximumSize(QtCore.QSize(16777215, 31))
+        self.search_Edit.setObjectName("search_Edit")
+        self.gridLayout.addWidget(self.search_Edit, 0, 1, 1, 1)
+        self.menu_Button = QtWidgets.QToolButton(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(1)
+        sizePolicy.setHeightForWidth(self.menu_Button.sizePolicy().hasHeightForWidth())
+        self.menu_Button.setSizePolicy(sizePolicy)
+        self.menu_Button.setMinimumSize(QtCore.QSize(201, 31))
+        self.menu_Button.setMaximumSize(QtCore.QSize(201, 31))
+        self.menu_Button.setIcon(icon)
+        self.menu_Button.setPopupMode(QtWidgets.QToolButton.MenuButtonPopup)
+        self.menu_Button.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
+        self.menu_Button.setObjectName("menu_Button")
+
+        self.menu_Button.setAutoRaise(True)
+        self.menu = QtWidgets.QMenu()
+
+        self.logout = QtWidgets.QAction('注销帐户:', parent=self.menu)
+        self.exit_button = QtWidgets.QAction('退出系统', parent=self.menu)
+
+        self.menu.addAction(self.logout)
+        self.menu.addSeparator()
+        self.menu.addAction(self.exit_button)
+        self.menu_Button.setMenu(self.menu)
+
+        self.gridLayout.addWidget(self.menu_Button, 0, 4, 1, 1, QtCore.Qt.AlignRight|QtCore.Qt.AlignTop)
         self.logo = QtWidgets.QLabel(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(1)
@@ -42,7 +77,7 @@ class Ui_AdminUserWindow(object):
         self.gridLayout.addWidget(self.logo, 0, 0, 1, 1)
         self.user_table = QtWidgets.QTableWidget(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(3)
+        sizePolicy.setHorizontalStretch(4)
         sizePolicy.setVerticalStretch(6)
         sizePolicy.setHeightForWidth(self.user_table.sizePolicy().hasHeightForWidth())
         self.user_table.setSizePolicy(sizePolicy)
@@ -71,7 +106,7 @@ class Ui_AdminUserWindow(object):
         self.user_table.setHorizontalHeaderItem(7, item)
         item = QtWidgets.QTableWidgetItem()
         self.user_table.setHorizontalHeaderItem(8, item)
-        self.gridLayout.addWidget(self.user_table, 1, 0, 1, 2)
+        self.gridLayout.addWidget(self.user_table, 1, 0, 1, 5)
 
         self.user_table.setItemDelegateForColumn(0, EmptyDelegate(self))
         self.user_table.setItemDelegateForColumn(1, EmptyDelegate(self))
@@ -174,31 +209,21 @@ class Ui_AdminUserWindow(object):
                 self.user_table.setCellWidget(index, 8, frame_1)
                 index += 1
 
-        self.menu_Button = QtWidgets.QToolButton(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        self.search_Button = QtWidgets.QPushButton(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(1)
-        sizePolicy.setHeightForWidth(self.menu_Button.sizePolicy().hasHeightForWidth())
-        self.menu_Button.setSizePolicy(sizePolicy)
-        self.menu_Button.setMinimumSize(QtCore.QSize(201, 31))
-        self.menu_Button.setMaximumSize(QtCore.QSize(201, 31))
-        self.menu_Button.setIcon(icon)
-        self.menu_Button.setPopupMode(QtWidgets.QToolButton.MenuButtonPopup)
-        self.menu_Button.setToolButtonStyle(QtCore.Qt.ToolButtonTextBesideIcon)
-        self.menu_Button.setObjectName("menu_Button")
-
-        self.menu_Button.setAutoRaise(True)
-        self.menu = QtWidgets.QMenu()
-
-        self.logout = QtWidgets.QAction('注销帐户:', parent=self.menu)
-        self.exit_button = QtWidgets.QAction('退出系统', parent=self.menu)
-
-        self.menu.addAction(self.logout)
-        self.menu.addSeparator()
-        self.menu.addAction(self.exit_button)
-        self.menu_Button.setMenu(self.menu)
-
-        self.gridLayout.addWidget(self.menu_Button, 0, 1, 1, 1, QtCore.Qt.AlignRight|QtCore.Qt.AlignTop)
+        sizePolicy.setHeightForWidth(self.search_Button.sizePolicy().hasHeightForWidth())
+        self.search_Button.setSizePolicy(sizePolicy)
+        self.search_Button.setMinimumSize(QtCore.QSize(31, 31))
+        self.search_Button.setMaximumSize(QtCore.QSize(31, 31))
+        self.search_Button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.search_Button.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("../image/search.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.search_Button.setIcon(icon1)
+        self.search_Button.setObjectName("search_Button")
+        self.gridLayout.addWidget(self.search_Button, 0, 2, 1, 1)
         AdminUserWindow.setCentralWidget(self.centralwidget)
 
         self.setWindowOpacity(0.95)  # 设置窗口透明度
@@ -211,6 +236,7 @@ class Ui_AdminUserWindow(object):
     def retranslateUi(self, AdminUserWindow):
         _translate = QtCore.QCoreApplication.translate
         AdminUserWindow.setWindowTitle(_translate("AdminUserWindow", "Stepic 管理员管理用户界面"))
+        self.menu_Button.setText(_translate("AdminUserWindow", "..."))
         item = self.user_table.horizontalHeaderItem(0)
         item.setText(_translate("AdminUserWindow", "用户ID"))
         item = self.user_table.horizontalHeaderItem(1)
@@ -229,7 +255,6 @@ class Ui_AdminUserWindow(object):
         item.setText(_translate("AdminUserWindow", "个人简介"))
         item = self.user_table.horizontalHeaderItem(8)
         item.setText(_translate("AdminUserWindow", "操作"))
-        self.menu_Button.setText(_translate("AdminUserWindow", "..."))
 
 
 class EmptyDelegate(QtWidgets.QItemDelegate):

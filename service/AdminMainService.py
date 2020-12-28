@@ -14,7 +14,7 @@ sys.path.append(rootPath + '/service')
 from AdminLogin import Ui_AdminLoginWindow
 from DeveloperRegist import Ui_DeveloperRegistWindow
 from AdminMain1 import Ui_AdminMainWindow
-from AdminUser1 import  Ui_AdminUserWindow
+from AdminUser1 import Ui_AdminUserWindow
 from AdminDeveloper1 import Ui_AdminDeveloperWindow
 from AdminGame1 import Ui_AdminGameWindow
 from DeveloperMain import DeveloperMainWindow
@@ -257,6 +257,7 @@ class AdminUserForm(QtWidgets.QMainWindow, Ui_AdminUserWindow):
             self.user_table.setItem(0, 0, newItem)
             QtWidgets.QTableWidget.resizeRowsToContents(self.user_table)
         else:
+            self.search_Button.clicked.connect(self.search_user)
             for button in self.delete_button:
                 button.clicked.connect(self.delete_user)
             for button in self.update_button:
@@ -288,6 +289,22 @@ class AdminUserForm(QtWidgets.QMainWindow, Ui_AdminUserWindow):
         self.Win_login_1 = AdminLoginForm()
         self.hide()
         self.Win_login_1.show()
+
+    def search_user(self):
+        search = self.search_Edit.text()
+        if search == '':
+            for i in range(self.user_table.rowCount()):
+                self.user_table.setRowHidden(i, False)
+        else:
+            for i in range(self.user_table.rowCount()):
+                self.user_table.setRowHidden(i, False)
+            for i in range(self.user_table.rowCount()):
+                if search in self.user_table.item(i, 1).text():
+                    continue
+                elif search in self.user_table.item(i, 2).text():
+                    continue
+                else:
+                    self.user_table.setRowHidden(i, True)
 
     def delete_user(self):
         uid = self.sender().user['uid']
@@ -398,6 +415,7 @@ class AdminDeveloperForm(QtWidgets.QMainWindow, Ui_AdminDeveloperWindow):
             self.developer_table.setItem(0, 0, newItem)
             QtWidgets.QTableWidget.resizeRowsToContents(self.developer_table)
         else:
+            self.search_Button.clicked.connect(self.search_developer)
             for button in self.delete_button:
                 button.clicked.connect(self.delete_developer)
             for button in self.update_button:
@@ -429,6 +447,22 @@ class AdminDeveloperForm(QtWidgets.QMainWindow, Ui_AdminDeveloperWindow):
         self.Win_login_1 = AdminLoginForm()
         self.hide()
         self.Win_login_1.show()
+
+    def search_developer(self):
+        search = self.search_Edit.text()
+        if search == '':
+            for i in range(self.user_table.rowCount()):
+                self.developer_table.setRowHidden(i, False)
+        else:
+            for i in range(self.developer_table.rowCount()):
+                self.developer_table.setRowHidden(i, False)
+            for i in range(self.developer_table.rowCount()):
+                if search in self.developer_table.item(i, 1).text():
+                    continue
+                elif search in self.developer_table.item(i, 2).text():
+                    continue
+                else:
+                    self.developer_table.setRowHidden(i, True)
 
     def delete_developer(self):
         did = self.sender().developer['did']
@@ -508,6 +542,7 @@ class AdminGameForm(QtWidgets.QMainWindow, Ui_AdminGameWindow):
             self.all_table.setItem(0, 0, newItem)
             QtWidgets.QTableWidget.resizeRowsToContents(self.all_table)
         else:
+            self.search_Button.clicked.connect(self.search_game)
             for button in self.delete_button:
                 button.clicked.connect(self.delete_game)
         url_1 = 'https://stepic-api.redcountry.top/api/game/query_all_check'
@@ -553,6 +588,22 @@ class AdminGameForm(QtWidgets.QMainWindow, Ui_AdminGameWindow):
         self.Win_login_1 = AdminLoginForm()
         self.hide()
         self.Win_login_1.show()
+
+    def search_game(self):
+        search = self.search_Edit.text()
+        if search == '':
+            for i in range(self.all_table.rowCount()):
+                self.all_table.setRowHidden(i, False)
+        else:
+            for i in range(self.all_table.rowCount()):
+                self.all_table.setRowHidden(i, False)
+            for i in range(self.all_table.rowCount()):
+                if search in self.all_table.item(i, 1).text():
+                    continue
+                elif search in self.all_table.item(i, 5).text():
+                    continue
+                else:
+                    self.all_table.setRowHidden(i, True)
 
     def delete_game(self):
         gid = self.sender().game['gid']

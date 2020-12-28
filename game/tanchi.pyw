@@ -201,6 +201,7 @@ def game(screen):
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
+                send_score(score)
                 exit()
         # 填充屏幕
         screen.fill((0, 0, 100))
