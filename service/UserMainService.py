@@ -4,6 +4,7 @@ import json
 import os
 import configparser
 import datetime
+import subprocess
 from threading import Thread
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QMessageBox
@@ -11,7 +12,7 @@ from PyQt5.QtCore import pyqtSignal
 
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
-sys.path.append(rootPath + '\windows')
+sys.path.append(rootPath + '/windows')
 
 from UserLogin import Ui_UserLoginWindow
 from UserRegist import Ui_UserRegistWindow
@@ -269,7 +270,10 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
             if config.has_option('Game', self.sender().game['gname']):  # 判断是否已有该游戏
                 if config.get('Game', self.sender().game['gname']) == self.sender().game['version']:  # 有该游戏判断版本是否最新
                     self.hide()
-                    os.system('python ../game/' + self.sender().game['filename'])
+                    cmd = 'python ../game/' + self.sender().game['filename']
+                    res = subprocess.call(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                          stderr=subprocess.PIPE)
+                    print(res)
                     self.receive_name(self.username)
                     index += 5
                     self.show()
@@ -283,13 +287,19 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                         massage = QMessageBox.information(self, '成功', '下载完成，是否打开游戏？', QMessageBox.Yes | QMessageBox.No)
                         if massage == QMessageBox.Yes:  # 打开游戏
                             self.hide()
-                            os.system('python ../game/' + self.sender().game['filename'])
+                            cmd = 'python ../game/' + self.sender().game['filename']
+                            res = subprocess.call(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                                  stderr=subprocess.PIPE)
+                            print(res)
                             self.receive_name(self.username)
                             index += 5
                             self.show()
                     else:  # 不更新打开游戏
                         self.hide()
-                        os.system('python ../game/' + self.sender().game['filename'])
+                        cmd = 'python ../game/' + self.sender().game['filename']
+                        res = subprocess.call(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                              stderr=subprocess.PIPE)
+                        print(res)
                         index += 5
                         self.show()
             else:  # 下载游戏并在配置文件中记录
@@ -302,7 +312,10 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                     massage = QMessageBox.information(self, '成功', '下载完成，是否打开游戏？', QMessageBox.Yes | QMessageBox.No)
                     if massage == QMessageBox.Yes:  # 打开游戏
                         self.hide()
-                        os.system('python ../game/' + self.sender().game['filename'])
+                        cmd = 'python ../game/' + self.sender().game['filename']
+                        res = subprocess.call(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                              stderr=subprocess.PIPE)
+                        print(res)
                         self.receive_name(self.username)
                         index += 5
                         self.show()
@@ -317,7 +330,10 @@ class UserMainForm(QtWidgets.QMainWindow, Ui_UserMainWindow):
                 massage = QMessageBox.information(self, '成功', '下载完成，是否打开游戏？', QMessageBox.Yes | QMessageBox.No)
                 if massage == QMessageBox.Yes:  # 打开游戏
                     self.hide()
-                    os.system('python ../game/' + self.sender().game['filename'])
+                    cmd = 'python ../game/' + self.sender().game['filename']
+                    res = subprocess.call(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                          stderr=subprocess.PIPE)
+                    print(res)
                     self.receive_name(self.username)
                     index += 5
                     self.show()
