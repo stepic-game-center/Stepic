@@ -451,7 +451,7 @@ class AdminDeveloperForm(QtWidgets.QMainWindow, Ui_AdminDeveloperWindow):
     def search_developer(self):
         search = self.search_Edit.text()
         if search == '':
-            for i in range(self.user_table.rowCount()):
+            for i in range(self.developer_table.rowCount()):
                 self.developer_table.setRowHidden(i, False)
         else:
             for i in range(self.developer_table.rowCount()):
